@@ -22,21 +22,29 @@ function round(playerSelection, computerSelection) {
 }
 
 function game() {
+
+    let wincounter = 0;
+
     for (let i = 0; i < 5; i++)
     {
         let playerSelection = prompt("Enter rock, paper, or scissors: ");
-        switch(playerSelection.toLowerCase()) {
-            case "rock":
-                console.log("Player chose rock");
-            case "paper":
-                console.log("Player chose paper");
-            case "scissors":
-                console.log("Player chose scissors");
-            default:
-                console.log("Player typed it wrong")
-                break
+        let result = round(playerSelection,getComputerChoice());
+        console.log(result);
+
+        if (result == "You win the round!")
+        {
+            wincounter++;
         }
-        console.log(round(playerSelection,getComputerChoice()));
+    }
+
+    if (wincounter > 2)
+    {
+        console.log("Player won the game");
+        return "You won the game! You had: " + wincounter + " wins"; 
+    } else 
+    {
+        console.log("Player lost the game");
+        return "You lost the game! You had: " + wincounter + " wins"; 
     }
 }
 
